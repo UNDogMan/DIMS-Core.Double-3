@@ -1,0 +1,12 @@
+﻿CREATE TABLE [dbo].[UserTasks]
+(
+	[UserTaskId] INT NOT NULL IDENTITY (1, 1),
+	[TaskId] INT NOT NULL,
+	[UserId] INT NOT NULL,
+	[StateId] INT NOT NULL,
+
+	CONSTRAINT PK_UserTask_UserTaskId PRIMARY KEY(UserTaskId),
+	FOREIGN KEY (TaskId) REFERENCES Tasks (TaskId) ON DELETE CASCADE,
+	FOREIGN KEY (UserId) REFERENCES UserProfiles (UserId) ON DELETE CASCADE,
+	FOREIGN KEY (StateId) REFERENCES TaskStates (StateId)
+)

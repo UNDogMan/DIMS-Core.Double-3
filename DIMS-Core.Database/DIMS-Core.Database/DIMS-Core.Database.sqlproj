@@ -9,8 +9,7 @@
     <ProjectGuid>{6bb58f8b-33a2-43ca-b4a2-a27c51fcfccf}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
-    <RootPath>
-    </RootPath>
+    <RootPath />
     <RootNamespace>DIMS_Core.Database</RootNamespace>
     <AssemblyName>DIMS_Core.Database</AssemblyName>
     <ModelCollation>1033,CI</ModelCollation>
@@ -50,7 +49,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
-    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
     <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
     <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
   </PropertyGroup>
@@ -70,6 +68,19 @@
     <Build Include="Views\vUserProfiles.sql" />
     <Build Include="Functions\GetFullAge.sql" />
     <None Include="Functions\TestScript.sql" />
+    <Build Include="Tables\Tasks.sql" />
+    <Build Include="Views\vTask.sql" />
+    <Build Include="Tables\TaskTracks.sql" />
+    <Build Include="Tables\TaskStates.sql" />
+    <Build Include="Tables\UserTasks.sql" />
+    <Build Include="Views\vUserTracks.sql" />
+    <Build Include="Views\vUserProgress.sql" />
+    <Build Include="Views\vUserTasks.sql" />
+    <Build Include="Procedures\DeleteTask.sql" />
+    <Build Include="Procedures\DeleteUser.sql" />
+    <Build Include="Procedures\SetUserTaskAsSuccess.sql" />
+    <Build Include="Procedures\SetUserTaskAsFail.sql" />
+    <Build Include="SeedData\TaskStatesSeedData.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SeedData\UserProfilesSeedData.sql" />
