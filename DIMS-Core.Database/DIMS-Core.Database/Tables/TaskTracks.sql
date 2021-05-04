@@ -6,5 +6,6 @@
 	[TrackNote] NVARCHAR(250) NOT NULL,
 
 	CONSTRAINT PK_TaskTracks_TaskTrackId PRIMARY KEY(TaskTrackId),
-	FOREIGN KEY (UserTaskId) REFERENCES UserTasks(UserTaskId)
+	CONSTRAINT FK_TaskTracks_UserTasks_UserTaskId FOREIGN KEY (UserTaskId) REFERENCES UserTasks(UserTaskId) 
+		ON DELETE CASCADE ON UPDATE CASCADE
 )
