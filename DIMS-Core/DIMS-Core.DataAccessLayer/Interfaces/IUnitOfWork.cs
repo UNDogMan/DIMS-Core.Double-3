@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using DIMS_Core.DataAccessLayer.Models;
 
@@ -12,6 +12,6 @@ namespace DIMS_Core.DataAccessLayer.Interfaces
 
         IReadOnlyRepository<VUserProfile> VUserProfileRepository { get; }
 
-        System.Threading.Tasks.Task Save();
+        Task Save();
     }
 }
