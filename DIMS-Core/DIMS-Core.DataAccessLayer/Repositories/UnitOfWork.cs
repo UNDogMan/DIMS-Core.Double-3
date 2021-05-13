@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using DIMS_Core.DataAccessLayer.Interfaces;
 using DIMS_Core.DataAccessLayer.Models;
 using Task = System.Threading.Tasks.Task;
+using TaskEntity = DIMS_Core.DataAccessLayer.Models.Task;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
@@ -18,20 +19,52 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         public UnitOfWork(DimsCoreContext context,
                           IRepository<UserProfile> userProfileRepository,
                           IRepository<Direction> directionRepository,
-                          IReadOnlyRepository<VUserProfile> vUserProfileRepository)
+                          IReadOnlyRepository<VUserProfile> vUserProfileRepository,
+                          IReadOnlyRepository<VTask> vTaskRepository,
+                          IReadOnlyRepository<VUserProgress> vUserProgressRepository,
+                          IReadOnlyRepository<VUserTask> vUserTaskRepository,
+                          IReadOnlyRepository<VUserTrack> vUserTrackRepository,
+                          IRepository<TaskEntity> taskRepository,
+                          IRepository<TaskState> taskStateRepository,
+                          IRepository<TaskTrack> taskTrackRepository,
+                          IRepository<UserTask> userTaskRepository)
         {
             _context = context;
 
             UserProfileRepository = userProfileRepository;
             DirectionRepository = directionRepository;
             VUserProfileRepository = vUserProfileRepository;
+            VTaskRepository = vTaskRepository;
+            VUserProgressRepository = vUserProgressRepository;
+            VUserTaskRepository = vUserTaskRepository;
+            VUserTrackRepository = vUserTrackRepository;
+            TaskRepository = taskRepository;
+            TaskStateRepository = taskStateRepository;
+            TaskTrackRepository = taskTrackRepository;
+            UserTaskRepository = userTaskRepository;
         }
 
         public IRepository<UserProfile> UserProfileRepository { get; }
 
         public IRepository<Direction> DirectionRepository { get; }
+        
+        public IRepository<TaskEntity> TaskRepository { get; }
+        
+        public IRepository<TaskState> TaskStateRepository { get; }
+        
+        public IRepository<TaskTrack> TaskTrackRepository { get; }
+        
+        public IRepository<UserTask> UserTaskRepository { get; }
 
         public IReadOnlyRepository<VUserProfile> VUserProfileRepository { get; }
+        
+        public IReadOnlyRepository<VTask> VTaskRepository { get; }
+        
+        public IReadOnlyRepository<VUserProgress> VUserProgressRepository { get; }
+        
+        public IReadOnlyRepository<VUserTask> VUserTaskRepository { get; }
+        
+        public IReadOnlyRepository<VUserTrack> VUserTrackRepository { get; }
 
         /// <summary>
         ///     This method is not important here because each repository already has same method.
