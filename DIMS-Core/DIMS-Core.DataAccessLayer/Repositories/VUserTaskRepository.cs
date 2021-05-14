@@ -5,23 +5,11 @@ using System.Linq;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VUserTaskRepository : IReadOnlyRepository<VUserTask>
+    public class VUserTaskRepository : ReadOnlyRepository<VUserTask>
     {
-        private readonly DimsCoreContext _context;
-
-        public VUserTaskRepository(DimsCoreContext context)
+        public VUserTaskRepository(DimsCoreContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public void Dispose()
-        {
-            _context?.Dispose();
-        }
-
-        public IQueryable<VUserTask> GetAll()
-        {
-            return _context.VUserTasks.AsNoTracking();
+            
         }
     }
 }

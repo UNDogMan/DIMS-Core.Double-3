@@ -6,23 +6,11 @@ using System.Linq;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
-    public class VUserTrackRepository : IReadOnlyRepository<VUserTrack>
+    public class VUserTrackRepository : ReadOnlyRepository<VUserTrack>
     {
-        private readonly DimsCoreContext _context;
-
-        public VUserTrackRepository(DimsCoreContext context)
+        public VUserTrackRepository(DimsCoreContext context) : base(context)
         {
-            _context = context;
-        }
-
-        public void Dispose()
-        {
-            _context?.Dispose();
-        }
-
-        public IQueryable<VUserTrack> GetAll()
-        {
-            return _context.VUserTracks.AsNoTracking();
+            
         }
     }
 }

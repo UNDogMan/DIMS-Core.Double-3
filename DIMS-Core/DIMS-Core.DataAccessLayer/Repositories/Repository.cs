@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using DIMS_Core.DataAccessLayer.Exceptions;
+using DIMS_Core.Common.Exceptions;
 using DIMS_Core.DataAccessLayer.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +10,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
     public abstract class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
-        private readonly DbContext _context;
+        protected readonly DbContext _context;
         protected readonly DbSet<TEntity> Set;
 
         protected Repository(DbContext context)
@@ -30,7 +30,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
 
             TEntity objectFromDB = await Set.FindAsync(id);
 
-            ExceptionHelper.CheckEntityExists(objectFromDB, nameof(GetById));
+            ExceptionHelper.CheckEntityExists(objectFromDB, nameof(objectFromDB));
 
             return objectFromDB;
         }
@@ -47,15 +47,15 @@ namespace DIMS_Core.DataAccessLayer.Repositories
             return updatedEntity.Entity;
         }
 
-        public async Task Delete(int id)
+        public virtual async Task Delete(int id)
         {
             var entity = await Set.FindAsync(id);
             Set.Remove(entity);
         }
 
-        public async Task Save()
+        public Task Save()
         {
-            await _context.SaveChangesAsync();
+            return _context.SaveChangesAsync();
         }
         
         public void Dispose()

@@ -1,4 +1,4 @@
-﻿namespace DIMS_Core.DataAccessLayer.Exceptions
+﻿namespace DIMS_Core.Common.Exceptions
 {
     public static class ExceptionHelper
     {
@@ -10,11 +10,11 @@
             }
         }
 
-        public static void CheckEntityExists(object entity, string methodName)
+        public static void CheckEntityExists(object entity, string entityName)
         {
             if (entity is null)
             {
-                throw new EntityNotExistException(methodName, "Entity not exists in database");
+                throw new ObjectNotFoundException(entityName);
             }
         }
     }
