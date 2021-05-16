@@ -15,14 +15,14 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         {
             var userIdParam = new SqlParameter("@userId", userId);
             var taskIdParam = new SqlParameter("@taskId", taskId);
-            return _context.Database.ExecuteSqlRawAsync("exec [dbo].[SetUserTaskAsFail] @userId, @taskId", userIdParam, taskIdParam);
+            return GetDatabase().ExecuteSqlRawAsync("exec [dbo].[SetUserTaskAsFail] @userId, @taskId", userIdParam, taskIdParam);
         }
         
         public Task SetUserTaskAsSuccess(int userId, int taskId)
         {
             var userIdParam = new SqlParameter("@userId", userId);
             var taskIdParam = new SqlParameter("@taskId", taskId);
-            return _context.Database.ExecuteSqlRawAsync("exec [dbo].[SetUserTaskAsSuccess] @userId, @taskId", userIdParam, taskIdParam);
+            return GetDatabase().ExecuteSqlRawAsync("exec [dbo].[SetUserTaskAsSuccess] @userId, @taskId", userIdParam, taskIdParam);
         }
     }
 }

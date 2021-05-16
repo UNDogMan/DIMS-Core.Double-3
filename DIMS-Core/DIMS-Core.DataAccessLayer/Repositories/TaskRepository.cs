@@ -13,7 +13,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         public override System.Threading.Tasks.Task Delete(int id)
         {
             var idParam = new SqlParameter("@id", id);
-            return _context.Database.ExecuteSqlRawAsync("exec [dbo].[DeleteTask] @id", idParam);
+            return GetDatabase().ExecuteSqlRawAsync("exec [dbo].[DeleteTask] @id", idParam);
         }
     }
 }

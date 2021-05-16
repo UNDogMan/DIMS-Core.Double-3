@@ -4,19 +4,25 @@ using System.Threading.Tasks;
 using DIMS_Core.Common.Exceptions;
 using DIMS_Core.DataAccessLayer.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace DIMS_Core.DataAccessLayer.Repositories
 {
     public abstract class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
-        protected readonly DbContext _context;
+        private readonly DbContext _context;
         protected readonly DbSet<TEntity> Set;
 
         protected Repository(DbContext context)
         {
             _context = context;
             Set = context.Set<TEntity>();
+        }
+
+        public DatabaseFacade GetDatabase()
+        {
+            return _context.Database;
         }
 
         public IQueryable<TEntity> GetAll()

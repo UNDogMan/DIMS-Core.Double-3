@@ -14,7 +14,7 @@ namespace DIMS_Core.DataAccessLayer.Repositories
         public override Task Delete(int id)
         {
             var idParam = new SqlParameter("@id", id);
-            return _context.Database.ExecuteSqlRawAsync("exec [dbo].[DeleteUser] @id", idParam);
+            return GetDatabase().ExecuteSqlRawAsync("exec [dbo].[DeleteUser] @id", idParam);
         }
     }
 }
